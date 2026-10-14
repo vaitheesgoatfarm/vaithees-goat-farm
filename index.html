@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#246b45"><title>Goat Farm Manager</title>
+<link rel="manifest" href="manifest.json">
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#203127;background:#f3f7f3;--g:#246b45;--line:#dce6dd}
+*{box-sizing:border-box}body{margin:0}header{padding:16px 20px;background:#174b31;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}h1{font-size:22px;margin:0}header small{color:#d9efdf}.wrap{max-width:1250px;margin:auto;padding:16px}.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:16px}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{background:white;border:1px solid var(--line);border-radius:12px;padding:14px}.stat strong{display:block;font-size:26px}.muted{color:#66776a;font-size:13px}button,input,select,textarea{font:inherit}button{background:var(--g);color:#fff;border:0;border-radius:9px;padding:10px 13px;font-weight:650;cursor:pointer}button.secondary{background:#edf4ee;color:#234c32;border:1px solid var(--line)}button.red{background:#fff0f0;color:#a22;border:1px solid #f2cccc}input,select,textarea{border:1px solid #cbd9ce;border-radius:8px;padding:10px;background:#fff;min-width:0;width:100%}label{font-size:12px;font-weight:700;color:#4b5f50;display:block;margin-bottom:5px}.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.field.full{grid-column:1/-1}.nav{display:flex;gap:6px;overflow:auto;padding:8px 0 14px}.nav button{white-space:nowrap}.nav button.on{background:#dcefe2;color:#1d5936}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:700px}th,td{text-align:left;border-bottom:1px solid #e8eee9;padding:10px;font-size:13px}th{background:#f2f7f2;color:#46594b}.hidden{display:none!important}.notice{padding:12px;border:1px solid #f0ddb7;background:#fff8e8;border-radius:10px;color:#754b13;font-size:13px}.ok{background:#eaf7ed;border-color:#cce8d2;color:#245d33}.err{color:#a22}.small{font-size:12px}.actions{display:flex;gap:6px;flex-wrap:wrap}@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fields{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){.wrap{padding:10px}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}header{padding:13px}.grid{gap:8px}.stat{padding:10px}.stat strong{font-size:22px}}
+</style>
+</head>
+<body>
+<header><div><h1>🐐 <span data-en="Goat Farm Manager" data-ta="ஆட்டுப் பண்ணை மேலாளர்">Goat Farm Manager</span></h1><small data-en="Shared online farm records" data-ta="பகிரப்பட்ட இணையப் பண்ணைப் பதிவுகள்">Shared online farm records</small></div><div class="row"><select id="language" style="width:auto" onchange="setLanguage(this.value)"><option value="en">English</option><option value="ta">தமிழ்</option></select><button class="secondary hidden" id="signout" onclick="signOut()">Sign out</button></div></header>
+<div class="wrap">
+<div id="configNotice" class="notice">Setup required: add your Supabase project URL and publishable/anon key in <b>app.js</b> before signing in. Never put a service-role key in this website.</div>
+<section id="authPanel" class="panel">
+<h2 data-en="Sign in to your farm" data-ta="உங்கள் பண்ணையில் உள்நுழைக">Sign in to your farm</h2>
+<p class="muted" data-en="Create your account in Supabase first, then sign in here." data-ta="முதலில் Supabase-இல் கணக்கு உருவாக்கி, பின்னர் இங்கே உள்நுழையவும்.">Create your account in Supabase first, then sign in here.</p>
+<div class="fields">
+<div><label>Email</label><input id="email" type="email" autocomplete="username" placeholder="you@example.com"></div>
+<div><label data-en="Password" data-ta="கடவுச்சொல்">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="••••••••"></div>
+</div><div class="row" style="margin-top:12px"><button onclick="signIn()">Sign in</button><button class="secondary" onclick="signUp()">Create account</button></div><p id="authMessage" class="muted"></p>
+</section>
+<div id="appPanel" class="hidden">
+<div class="row" style="justify-content:space-between;margin-bottom:12px"><div><h2 id="pageTitle" style="margin:0">Dashboard</h2><div class="muted" id="userLabel"></div></div><div class="row"><button class="secondary" onclick="refreshCurrent()">Refresh</button></div></div>
+<div class="nav" id="nav"></div>
+<div id="view"></div>
+</div>
+<p class="muted small">Prototype starter. Use a qualified veterinarian's schedule for vaccines, treatments and withdrawal periods. Keep regular backups.</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+</body></html>

@@ -1,0 +1,9 @@
+{
+  "name": "Goat Farm Manager",
+  "short_name": "Goat Farm",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f7f3",
+  "theme_color": "#246b45",
+  "description": "Bilingual goat farm management"
+}
