@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#164d32">
+<title>Goat Farm Manager | ஆட்டுப் பண்ணை மேலாளர்</title>
+<style>
+:root{--bg:#f4f7f2;--surface:#fff;--ink:#1d2b22;--muted:#68776d;--green:#246b45;--green-dark:#164d32;--line:#dce5dd;--red:#a52f2f;--shadow:0 8px 24px rgba(24,55,34,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}header{background:linear-gradient(120deg,#164d32,#2f8051);color:#fff;padding:18px clamp(16px,4vw,40px);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}h1{font-size:25px;margin:0}header p{margin:2px 0 0;color:#e2f3e8}.header-actions,.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.header-actions select{padding:9px;border:1px solid #c8dfce;border-radius:6px;background:#fff;color:#173d28}.layout{display:grid;grid-template-columns:230px minmax(0,1fr);max-width:1500px;margin:auto;min-height:calc(100vh - 76px)}nav{padding:18px 12px;border-right:1px solid var(--line);background:#fbfdfb}nav:empty{display:none}nav button{display:block;width:100%;text-align:left;margin:0 0 5px;padding:10px 12px;border:0;border-radius:5px;background:transparent;color:#44584a;font:600 14px inherit;cursor:pointer}nav button:hover,nav button.on{background:#e4f2e8;color:var(--green)}main{padding:clamp(16px,3vw,30px);min-width:0;width:100%}.page-title{margin-bottom:16px}.page-title h2{margin:0;font-size:24px}.panel,.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px;box-shadow:var(--shadow);margin-bottom:16px}.panel h3{margin:0 0 12px;font-size:17px}.notice{padding:13px 15px;border:1px solid #ead8a6;border-radius:6px;background:#fff8e5;margin-bottom:15px}.hidden{display:none!important}.auth-panel{max-width:520px;margin:clamp(30px,8vh,90px) auto}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:5px;min-width:0}.field label{font-size:12px;font-weight:700;color:#4d6253}.field input,.field select,.field textarea{width:100%;padding:10px;border:1px solid #cedbd0;border-radius:5px;background:#fff;color:var(--ink);font:inherit}.field textarea{min-height:75px}.field:has(textarea){grid-column:1/-1}button{border:0;border-radius:5px;padding:10px 14px;background:var(--green);color:#fff;font:600 14px inherit;cursor:pointer}button.secondary{background:#edf4ee;color:#204b31;border:1px solid var(--line)}button:hover{filter:brightness(.96)}.muted{color:var(--muted)}.err{color:var(--red)}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}.stat{display:flex;flex-direction:column;gap:8px;margin:0}.stat strong{font-size:28px}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:6px}table{width:100%;border-collapse:collapse;min-width:680px;background:#fff}th,td{padding:10px 12px;border-bottom:1px solid #e8eee9;text-align:left;vertical-align:top;font-size:13px}th{background:#f1f6f1;color:#43564a;font-size:12px;white-space:nowrap}.foot{padding:14px 0;color:var(--muted);font-size:12px}.foot a{color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}.grid .stat{margin:0;min-height:174px;justify-content:center;padding:22px 24px}.stat-label{font-size:14px;color:var(--muted)}.stat strong{font-size:32px;margin:6px 0;color:var(--ink)}.stat-note{font-size:13px;color:var(--muted)}.dashboard-section{margin-bottom:16px}.quick-actions{display:flex;gap:9px;flex-wrap:wrap}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:700px){.layout{grid-template-columns:1fr}nav{display:flex;overflow:auto;gap:4px;padding:8px;border-right:0;border-bottom:1px solid var(--line)}nav button{width:auto;white-space:nowrap;margin:0}.fields{grid-template-columns:1fr}.field:has(textarea){grid-column:auto}main{padding:14px}header{padding:15px}.grid{gap:8px}.grid .stat{min-height:140px;padding:13px}.stat strong{font-size:23px}}
+</style>
+<style>
+.vax-tabs{display:flex;gap:5px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:16px;padding-bottom:7px}.vax-tabs button{white-space:nowrap;background:transparent;color:#44584a;padding:9px 12px}.vax-tabs button.on,.vax-tabs button:hover{background:#e4f2e8;color:var(--green)}
+.vax-form-grid,.vax-filter-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0}.vax-form-grid label,.vax-filter-grid label{display:flex;flex-direction:column;gap:5px;min-width:0;font-size:12px;font-weight:700;color:#4d6253}.vax-form-grid input,.vax-form-grid select,.vax-form-grid textarea,.vax-filter-grid input,.vax-filter-grid select{width:100%;padding:10px;border:1px solid #cedbd0;border-radius:5px;background:#fff;color:var(--ink);font:inherit;font-weight:400}.vax-form-grid textarea{min-height:68px;resize:vertical}.vax-form-grid .vax-wide{grid-column:1/-1}.vax-check{display:flex!important;flex-direction:row!important;align-items:center;gap:8px!important}.vax-check input{width:auto!important}.vax-heading{justify-content:space-between;margin-bottom:12px}.vax-heading h3{margin:0}.vax-status{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}.vax-completedStatus,.vax-upcomingStatus,.vax-inStock{background:#e8f4ec;color:#27643d}.vax-todayStatus,.vax-expiringSoon{background:#fff0db;color:#92510d}.vax-overdueStatus,.vax-reviewStatus,.vax-expired{background:#ffe8e8;color:#a52f2f}
+.vax-form-grid,.vax-filter-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0}.vax-form-grid label,.vax-filter-grid label{display:flex;flex-direction:column;gap:5px;min-width:0;font-size:12px;font-weight:700;color:#4d6253}.vax-form-grid input,.vax-form-grid select,.vax-form-grid textarea,.vax-filter-grid input,.vax-filter-grid select{width:100%;padding:10px;border:1px solid #cedbd0;border-radius:5px;background:#fff;color:var(--ink);font:inherit;font-weight:400}.vax-form-grid textarea{min-height:68px;resize:vertical}.vax-form-grid .vax-wide{grid-column:1/-1}.vax-check{display:flex!important;flex-direction:row!important;align-items:center;gap:8px!important}.vax-check input{width:auto!important}.vax-heading{justify-content:space-between;margin-bottom:12px}.vax-heading h3{margin:0}.vax-status{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}.vax-completedStatus,.vax-upcomingStatus,.vax-inStock{background:#e8f4ec;color:#27643d}.vax-todayStatus,.vax-expiringSoon{background:#fff0db;color:#92510d}.vax-overdueStatus,.vax-reviewStatus,.vax-expired{background:#ffe8e8;color:#a52f2f}
+@media(max-width:900px){.vax-form-grid,.vax-filter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:700px){.vax-form-grid,.vax-filter-grid{grid-template-columns:1fr}.vax-form-grid .vax-wide{grid-column:auto}}
+@media(max-width:700px){.vax-tabs button{font-size:12px;padding:8px 10px}}
+@media(max-width:900px){.vax-form-grid,.vax-filter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:700px){.vax-form-grid,.vax-filter-grid{grid-template-columns:1fr}.vax-form-grid .vax-wide{grid-column:auto}}@media print{header,nav,.vax-tabs,.vax-filter-grid,.vax-heading button,.row button,.foot{display:none!important}.layout{display:block}main{padding:0}.panel{box-shadow:none;border:0}}
+</style>
+</head>
+<body>
+<header>
+  <div><h1 data-en="🐐 Goat Farm Manager" data-ta="🐐 ஆட்டுப் பண்ணை மேலாளர்">🐐 Goat Farm Manager</h1><p data-en="Farm records, shared through your Supabase database" data-ta="உங்கள் Supabase தரவுத்தளத்தில் பகிரப்படும் பண்ணைப் பதிவுகள்">Farm records, shared through your Supabase database</p></div>
+  <div class="header-actions">
+    <span id="userLabel" class="hidden"></span>
+    <select aria-label="Language" onchange="setLanguage(this.value)"><option value="en">English</option><option value="ta">தமிழ்</option></select>
+    <button id="signout" class="secondary hidden" onclick="signOut()" data-en="Sign out" data-ta="வெளியேறு">Sign out</button>
+  </div>
+</header>
+<div class="layout">
+  <nav id="nav" aria-label="Main navigation"></nav>
+  <main>
+    <div id="configNotice" class="notice hidden">Configure the Supabase project URL and publishable key in app.js to enable cloud access.</div>
+    <section id="authPanel" class="panel auth-panel">
+      <h2 data-en="Sign in to your farm" data-ta="உங்கள் பண்ணையில் உள்நுழைக">Sign in to your farm</h2>
+      <p class="muted" data-en="Use your email and password to access shared farm records." data-ta="பகிரப்பட்ட பண்ணைப் பதிவுகளை அணுக உங்கள் மின்னஞ்சல் மற்றும் கடவுச்சொல்லைப் பயன்படுத்தவும்.">Use your email and password to access shared farm records.</p>
+      <div class="fields">
+        <div class="field"><label for="email" data-en="Email" data-ta="மின்னஞ்சல்">Email</label><input id="email" type="email" autocomplete="username" required></div>
+        <div class="field"><label for="password" data-en="Password" data-ta="கடவுச்சொல்">Password</label><input id="password" type="password" autocomplete="current-password" minlength="8" required></div>
+      </div>
+      <div class="row" style="margin-top:14px"><button onclick="signIn()" data-en="Sign in" data-ta="உள்நுழை">Sign in</button><button class="secondary" onclick="signUp()" data-en="Create account" data-ta="கணக்கை உருவாக்கு">Create account</button></div>
+      <p id="authMessage" class="muted" role="status"></p>
+    </section>
+    <section id="appPanel" class="hidden">
+      <div class="page-title"><h2 id="pageTitle"></h2></div>
+      <div id="view"></div>
+    </section>
+    <footer class="foot">Cloud records require the Supabase database setup in README.md. Existing records from the local prototype remain on this device and are not migrated automatically. <a href="index.html?local=1">Open local records</a>.</footer>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="vaccination.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
