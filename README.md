@@ -41,6 +41,12 @@ Simple option: Vercel static deployment.
 
 You can also use another static host that serves HTML/JS files over HTTPS.
 
+## Prisma ORM configuration
+- Prisma is initialized with PostgreSQL settings in `prisma/schema.prisma` and `prisma7.config.ts`.
+- Set `DATABASE_URL` to the Supavisor transaction-pooler URL and `DIRECT_URL` to the session-pooler URL in `.env.local`. Replace `[YOUR-PASSWORD]` locally, percent-encoding any special characters. Do not commit the file or expose these database credentials in browser code.
+- Run `npx prisma validate` to check the configuration. Run `npx prisma db pull` only after adding a valid database password to introspect the existing database.
+- The current schema is managed by `schema.sql` and `migrations/`; introspect before using Prisma migrations so existing Row Level Security policies and database-specific SQL are preserved.
+
 ## Included in this starter
 - Email/password sign-in and sign-up via Supabase Auth
 - Shared online records for goat registration, health/vaccination, breeding, birth events, mortality, transactions, inventory and finance entries
@@ -70,5 +76,4 @@ You can also use another static host that serves HTML/JS files over HTTPS.
 2. In Supabase Table Editor or the app, have an owner/manager verify and activate each vaccine schedule; all templates begin inactive and contain no clinical defaults.
 3. Deploy the updated project root to Vercel as a static site. No build command is required.
 4. In the deployed app, verify sign-in, the Vaccination dashboard, a schedule approval, one test dose using a test batch, exports, and access with owner/manager/staff/viewer roles before using real records.
-
 
