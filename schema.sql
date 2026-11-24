@@ -32,6 +32,12 @@ create table if not exists public.goats (
  weight_kg numeric(8,2) check (weight_kg is null or weight_kg>=0),
  source text,
  status text not null default 'Active' check (status in ('Active','Sold','Dead','Transferred')),
+ purchase_date date,
+ purchase_amount numeric(12,2) check (purchase_amount is null or purchase_amount>=0),
+ purchase_party text,
+ sale_date date,
+ sale_amount numeric(12,2) check (sale_amount is null or sale_amount>=0),
+ sale_party text,
  pen text,
  mother_goat_id text,
  father_goat_id text,
@@ -41,6 +47,12 @@ create table if not exists public.goats (
  updated_at timestamptz not null default now(),
  unique(farm_id,goat_id)
 );
+alter table public.goats add column if not exists purchase_date date;
+alter table public.goats add column if not exists purchase_amount numeric(12,2);
+alter table public.goats add column if not exists purchase_party text;
+alter table public.goats add column if not exists sale_date date;
+alter table public.goats add column if not exists sale_amount numeric(12,2);
+alter table public.goats add column if not exists sale_party text;
 create table if not exists public.health_records (
  id uuid primary key default gen_random_uuid(), farm_id uuid not null references public.farms(id) on delete cascade,
  goat_id text not null, record_type text not null, record_date date not null, item_name text not null,
