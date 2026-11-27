@@ -13,7 +13,7 @@ This package is a starting point for a bilingual (English/Tamil) responsive web 
 1. Open https://supabase.com/ and create an account/project.
 2. In Project Settings > API, copy the Project URL and the publishable key (or anon key).
 3. Open SQL Editor > New query. Paste all of `schema.sql`, then Run.
-4. Open another SQL Editor query, paste `migrations/20261020_vaccination_module.sql`, and Run it after `schema.sql`.
+4. Open another SQL Editor query, paste `20261020_vaccination_module.sql`, and Run it after `schema.sql`.
 5. In Authentication > Providers, ensure Email is enabled.
 6. In Authentication settings, set the Site URL to the website URL after deploying. During testing, use the Supabase preview/deployment URL as appropriate.
 
@@ -72,7 +72,7 @@ You can also use another static host that serves HTML/JS files over HTTPS.
 - For a commercial herd of 200+ goats, test security, restore from backups, and validate all workflows before relying on this system for business-critical records.
 
 ## Deploy the vaccination update
-1. Apply `migrations/20261020_vaccination_module.sql` in the Supabase SQL Editor after the existing `schema.sql` has been installed.
+1. Apply `20261020_vaccination_module.sql` in the Supabase SQL Editor after the existing `schema.sql` has been installed.
 2. In Supabase Table Editor or the app, have an owner/manager verify and activate each vaccine schedule; all templates begin inactive and contain no clinical defaults.
 3. Deploy the updated project root to Vercel as a static site. No build command is required.
 4. In the deployed app, verify sign-in, the Vaccination dashboard, a schedule approval, one test dose using a test batch, exports, and access with owner/manager/staff/viewer roles before using real records.

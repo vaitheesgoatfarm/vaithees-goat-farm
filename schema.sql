@@ -39,6 +39,8 @@ create table if not exists public.goats (
  sale_amount numeric(12,2) check (sale_amount is null or sale_amount>=0),
  sale_party text,
  pen text,
+ maternal_vaccination_status text not null default 'Unknown'
+  check (maternal_vaccination_status in ('Vaccinated','Not vaccinated','Unknown')),
  mother_goat_id text,
  father_goat_id text,
  notes text,

@@ -16,6 +16,8 @@ begin
   end if;
 end $$;
 
+notify pgrst, 'reload schema';
+
 create table if not exists public.vaccination_schedules (
   id uuid primary key default gen_random_uuid(),
   farm_id uuid not null references public.farms(id) on delete cascade,
