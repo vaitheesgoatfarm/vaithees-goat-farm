@@ -14,6 +14,7 @@ This package is a starting point for a bilingual (English/Tamil) responsive web 
 2. In Project Settings > API, copy the Project URL and the publishable key (or anon key).
 3. Open SQL Editor > New query. Paste all of `schema.sql`, then Run.
 4. Open another SQL Editor query, paste `20261020_vaccination_module.sql`, and Run it after `schema.sql`.
+   - This migration is repeatable and repairs missing goat purchase/sale and vaccination columns.
 5. In Authentication > Providers, ensure Email is enabled.
 6. In Authentication settings, set the Site URL to the website URL after deploying. During testing, use the Supabase preview/deployment URL as appropriate.
 
@@ -53,6 +54,7 @@ You can also use another static host that serves HTML/JS files over HTTPS.
 - English/Tamil interface labels and responsive phone/desktop layout
 - PostgreSQL constraints and RLS policies based on farm membership
 - Basic dashboard counts
+- Health records support multiple medicines for one goat and date: add one medicine row per injection, tablet, syrup, etc., with its own dose, batch, expiry, and cost.
 - Vaccination schedules, individual dose history, upcoming/overdue views, batch inventory, audit overrides, and CSV/print reports
 
 ## Vaccination setup and clinical safety
@@ -72,8 +74,10 @@ You can also use another static host that serves HTML/JS files over HTTPS.
 - For a commercial herd of 200+ goats, test security, restore from backups, and validate all workflows before relying on this system for business-critical records.
 
 ## Deploy the vaccination update
-1. Apply `20261020_vaccination_module.sql` in the Supabase SQL Editor after the existing `schema.sql` has been installed.
+1. In the Supabase project configured in `app.js`, apply `20261020_vaccination_module.sql` in SQL Editor after `schema.sql` has been installed.
 2. In Supabase Table Editor or the app, have an owner/manager verify and activate each vaccine schedule; all templates begin inactive and contain no clinical defaults.
 3. Deploy the updated project root to Vercel as a static site. No build command is required.
 4. In the deployed app, verify sign-in, the Vaccination dashboard, a schedule approval, one test dose using a test batch, exports, and access with owner/manager/staff/viewer roles before using real records.
+
+If Vaccination shows that its tables are missing, rerun the latest `20261020_vaccination_module.sql` in the same Supabase project used by the app, confirm SQL Editor completes without errors, then reload the page. The schema-cache reload is at the end of the script. If it reports that no farm membership exists, add the signed-in user to `farm_members` for the farm before retrying.
 

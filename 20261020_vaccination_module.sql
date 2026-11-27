@@ -2,6 +2,15 @@
 -- Vaccine schedule rows are templates only; no medical values are prefilled.
 
 alter table public.goats
+  add column if not exists purchase_date date,
+  add column if not exists purchase_amount numeric(12,2),
+  add column if not exists purchase_party text,
+  add column if not exists sale_date date,
+  add column if not exists sale_amount numeric(12,2),
+  add column if not exists sale_party text,
+  add column if not exists pen text;
+
+alter table public.goats
   add column if not exists maternal_vaccination_status text not null default 'Unknown';
 
 do $$
@@ -15,8 +24,6 @@ begin
       check (maternal_vaccination_status in ('Vaccinated','Not vaccinated','Unknown'));
   end if;
 end $$;
-
-notify pgrst, 'reload schema';
 
 create table if not exists public.vaccination_schedules (
   id uuid primary key default gen_random_uuid(),
@@ -296,3 +303,5 @@ from public.farms f cross join (values
   ('HS','Haemorrhagic septicaemia'),('Goat Pox','Goat pox'),('Anthrax','Anthrax'),('ORF','Contagious ecthyma (ORF)')
 ) as t(vaccine_name,disease)
 where not exists (select 1 from public.vaccination_schedules s where s.farm_id=f.id and s.vaccine_name=t.vaccine_name and s.protocol_version='Unconfigured');
+
+notify pgrst, 'reload schema';

@@ -142,3 +142,5 @@ create index if not exists goats_farm_goat_id_idx on public.goats(farm_id,goat_i
 create index if not exists health_farm_due_idx on public.health_records(farm_id,next_due_date);
 create index if not exists breeding_farm_expected_idx on public.breeding_records(farm_id,expected_kidding_date);
 create index if not exists finance_farm_date_idx on public.finance_entries(farm_id,entry_date);
+
+notify pgrst, 'reload schema';
